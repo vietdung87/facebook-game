@@ -1,27 +1,21 @@
 <?php
-$mailServer=""// mail to ;
+
+$sendTo = "boy_stylish@yahoo.com";
+
+$subject = $_POST["sSubject"];
+
+$headers = "From: " . $_POST["sName"] . "<" . $_POST["sEmail"] .">\r\n";
+
+$headers .= "Reply-To: " . $_POST["sEmail"] . "\r\n";
+
+
+$headers .= "Return-path: " . $_POST["sEmail"];
 
 
 
-$subject = $_POST["subject"];
-
-$headers = "From: " . $_POST["name"] . "<" . $_POST["email"] .">\r\n";
-
-$headers .= "Reply-To: " . $_POST["email"] . "\r\n";
+$message = $_POST["sMessage"];
 
 
-$headers .= "Return-path: " . $_POST["email"];
-
-
-
-$message = $_POST["message"];
-
-
-mail($mailServer, $subject, $message, $headers);
-if(mail){
-	echo "Mail has been send"
-}else{
-	echo "try again"
-}
+mail($sendTo, $subject, $message, $headers);
 
 ?>
